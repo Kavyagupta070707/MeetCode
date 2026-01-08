@@ -4,4 +4,10 @@ dotenv.config({ quiet:true});
 export const ENV = {
     PORT : process.env.PORT ,
     MONGODB_URI : process.env.MONGODB_URI,
+    INNGEST_EVENT_KEY : process.env.INNGEST_EVENT_KEY,
+    INNGEST_SIGNING_KEY : process.env.INNGEST_SIGNING_KEY,
+    SREAM_API_KEY : process.env.SREAM_API_KEY,
+    STREAM_API_SECRET : process.env.STREAM_API_SECRET,
+    NODE_ENV : process.env.NODE_ENV,
+    
 }
