@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import Navbar from "../components/Navbar";
 
-import { PROBLEMS } from "../data/problems";
+import { PROBLEMS } from "../data/problems.js";
 import { ChevronRightIcon, Code2Icon } from "lucide-react";
 import { getDifficultyBadgeClass } from "../lib/utils";
 
@@ -66,24 +66,24 @@ function ProblemsPage() {
         </div>
 
         {/* STATS FOOTER */}
-        <div className="mt-12 card bg-base-100 shadow-lg">
+        <div className="mt-12 card bg-base-100 shadow-lg ">
           <div className="card-body">
             <div className="stats stats-vertical lg:stats-horizontal">
               <div className="stat">
-                <div className="stat-title">Total Problems</div>
+                <div className="stat-title text-xl">Total Problems</div>
                 <div className="stat-value text-primary">{problems.length}</div>
               </div>
 
               <div className="stat">
-                <div className="stat-title">Easy</div>
+                <div className="stat-title text-xl">Easy</div>
                 <div className="stat-value text-success">{easyProblemsCount}</div>
               </div>
               <div className="stat">
-                <div className="stat-title">Medium</div>
+                <div className="stat-title text-xl">Medium</div>
                 <div className="stat-value text-warning">{mediumProblemsCount}</div>
               </div>
               <div className="stat">
-                <div className="stat-title">Hard</div>
+                <div className="stat-title text-xl">Hard</div>
                 <div className="stat-value text-error">{hardProblemsCount}</div>
               </div>
             </div>
