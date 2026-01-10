@@ -1,12 +1,12 @@
-import mongoose from mongoose;
-
+import mongoose from "mongoose";
+import User from "./User.js"
 const sessionschema = new mongoose.Schema({
     problemTitle: {
         type: String,
         required: true
     },
     difficulty: {
-        typr: String,
+        type: String,
         enum: ['easy', 'medium', 'hard'],
         required: true
     },

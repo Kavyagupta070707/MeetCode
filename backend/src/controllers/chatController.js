@@ -1,4 +1,4 @@
-import { streamClient } from "../lib/stream";
+import { streamClient } from "../lib/stream.js";
 
 export async function getStreamtoken(req,res){
     try {

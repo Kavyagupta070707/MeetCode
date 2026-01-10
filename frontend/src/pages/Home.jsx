@@ -12,7 +12,9 @@ import {
   ZapIcon,
   HeartHandshake
 } from "lucide-react";
+
 const Home = () => {
+  
   return (
     <>
       <div className='bg-gradient-to-br from-base-100 via-base-200 to-base-300'>

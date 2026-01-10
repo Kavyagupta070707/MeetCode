@@ -9,17 +9,18 @@ import chatRoutes from "./routes/chatRoutes.js";
 import sessionRoutes from "./routes/sessionRoutes.js";
 const app= express();
 const PORT = ENV.PORT
-
+const path = await import("path");
 app.use(express.json());
 app.use(cors(
     {
-        origin: '*'
+        origin: 'http://localhost:5173',
+        credentials: true,
     }
 ))
 
 const _dirname = path.resolve();
 app.use(clerkMiddleware());
-app.use("/api/inngest", serve({client: inngest}, functions)) // deployment ke baad inngest me Apps me frontend ka URL daalna h
+app.use("/api/inngest", serve({client: inngest, functions})) // deployment ke baad inngest me Apps me frontend ka URL daalna h
 app.use("/api/chat", chatRoutes)
 app.use("/api/sessions", sessionRoutes)
 

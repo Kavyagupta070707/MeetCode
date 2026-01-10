@@ -7,8 +7,8 @@ const router = express.Router();
 router.post('/',protectRoute,createSession)
 router.get('/active',protectRoute,getActiveSessions)
 router.get('/past-sessions',protectRoute,getPastSessions)
-router.get('/:id',protectRoute,getSessionById)
 router.post('/:id/join',protectRoute,joinSession)
 router.post('/:id/end',protectRoute,endSession)
+router.get('/:id',protectRoute,getSessionById)
 
 export default router;

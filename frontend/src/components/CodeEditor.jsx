@@ -17,7 +17,7 @@ const CodeEditor = ({language, onLanguageChange, code, isrunning, onRunCode, onC
                 ))}
             </select>
 
-            <button className="btn btn-sm btn-primary bg-amber-400 gap-2" onClick={onRunCode} disabled={isrunning}>
+            <button className="btn btn-sm btn-primary gap-2" onClick={onRunCode} disabled={isrunning}>
               {isrunning ? (<><Loader2Icon className="animate-spin h-4 w-4"/>Running...</>) : (<><PlayIcon className="h-4 w-4"/> Run Code</>)}
             </button>
         </div>
