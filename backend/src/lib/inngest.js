@@ -8,7 +8,7 @@ export const inngest = new Inngest({ id: "meetcode-app"})
 const syncUser = inngest.createFunction(
     {id: "sync-user"},
     {event: "clerk/user.created" },
-    async (event)=>{
+    async ({event, step})=>{
         await connectDB();
         const {id, email_addresses, first_name,last_name, image_url} = event.data;
 
@@ -21,7 +21,6 @@ const syncUser = inngest.createFunction(
 
         await User.create(newUser);
 
-        await newUser.save();
 
         await upsertStreamUser({
             id: newUser.id.toString(),
@@ -33,7 +32,7 @@ const syncUser = inngest.createFunction(
 const deleteUser = inngest.createFunction(
     {id: "delete-user"},
     {event: "clerk/user.deleted" },
-    async (event)=>{
+    async ({event, step})=>{
         await connectDB();
         const {id} = event.data;
 
