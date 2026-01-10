@@ -36,7 +36,9 @@ if(ENV.NODE_ENV === 'production'){
     });
 }
 
-
+app.get("/hello", (req,res)=>{
+    res.send("Hello from backend!");
+})
 
 const startServer = async () => {
     try {
