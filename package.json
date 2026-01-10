@@ -1,0 +1,21 @@
+{
+  "name": "meetcode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "npm run start --prefix backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kavyagupta070707/MeetCode.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kavyagupta070707/MeetCode/issues"
+  },
+  "homepage": "https://github.com/Kavyagupta070707/MeetCode#readme"
+}
