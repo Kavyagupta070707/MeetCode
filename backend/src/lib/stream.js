@@ -1,7 +1,7 @@
 import {StreamChat} from "stream-chat"
 import {ENV} from "./env.js"
 import {StreamClient} from "@stream-io/node-sdk"
-const apikey=ENV.SREAM_API_KEY
+const apikey=ENV.STREAM_API_KEY
 const apiSecret=ENV.STREAM_API_SECRET
 
 if(!apikey || !apiSecret){
