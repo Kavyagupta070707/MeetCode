@@ -28,7 +28,9 @@ app.use("/api/inngest", serve({ client: inngest, functions })) // deployment ke 
 app.use("/api/chat", chatRoutes)
 app.use("/api/sessions", sessionRoutes)
 
-
+app.get("/hello", (req, res) => {
+    res.json({ message: "Hello, world!" });
+})
 
 if (process.env.NODE_ENV === 'production') {
     const staticPath = path.join(__dirname, '../../frontend/dist');
