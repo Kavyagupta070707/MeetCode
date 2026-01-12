@@ -31,14 +31,14 @@ if(ENV.NODE_ENV === 'production'){
     
     app.use(express.static(staticPath));
     
-    app.use((req, res) => {
-        res.sendFile(indexPath);
-    });
+    app.get('*', (req, res) => {
+    res.sendFile(indexPath);
+});
 }
 
-// app.get("/hello", (req,res)=>{
-//     res.send("Hello from backend!");
-// })
+app.get("/hello", (req,res)=>{
+    res.send("Hello from backend!");
+})
 
 const startServer = async () => {
     try {

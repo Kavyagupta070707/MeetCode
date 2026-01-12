@@ -29,7 +29,8 @@ export async function createSession(req,res){
 
         const channel = streamClient.channel("messaging", callId, {
             name: `${problem} Session`,
-            members: [clerkId]
+            members: [clerkId],
+            created_by_id: clerkId,
         });
 
         await channel.create();
