@@ -1,6 +1,7 @@
 import {useQuery, useMutation, useQueryClient} from '@tanstack/react-query';
 import toast from 'react-hot-toast';
-import { sessionApi } from '../api/sessions';
+import { sessionApi } from '../api/sessions.js';
+
 
 export const useActiveSessions= ()=>{
     const result = useQuery({
@@ -10,14 +11,18 @@ export const useActiveSessions= ()=>{
     return result;
 }
 
-export const useCreateSession= ()=>{
-    const result = useMutation({
-        mutationFn: sessionApi.createSession,
-        onSuccess: ()=> toast.success("Session Created Successfully"),
-        onError: (error)=> toast.error(error?.response?.data?.message || "Failed to create session"),
-    })
-    return result;
-}
+export const useCreateSession = () => {
+  return useMutation({
+    mutationFn: sessionApi.createSession,
+    onSuccess: (data) => {
+      toast.success("Session Created Successfully");
+      console.log("Created Session Data:", data);
+      return data; // important for caller
+    },
+    onError: (error) =>
+      toast.error(error?.response?.data?.message || "Failed to create session"),
+  });
+};
 
 export const useRecentSessions= ()=>{
     const result = useQuery({

@@ -32,7 +32,7 @@ function CreateSessionModal({
               onChange={(e) => {
                 const selectedProblem = problems.find((p) => p.title === e.target.value);
                 setRoomConfig({
-                  difficulty: selectedProblem.difficulty,
+                  difficulty: selectedProblem.difficulty.toLowerCase(),
                   problem: e.target.value,
                 });
               }}

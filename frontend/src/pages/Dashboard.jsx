@@ -1,8 +1,8 @@
 import { useUser } from "@clerk/clerk-react";
 import { useNavigate } from "react-router"
-import { useActiveSessions, useCreateSession, useRecentSessions } from "../hooks/useSessions";
-import Navbar from "../components/Navbar";
-import WelcomeSection from "../components/WelcomeSection";
+import { useActiveSessions, useCreateSession, useRecentSessions } from "../hooks/useSessions.js";
+import Navbar from "../components/Navbar.jsx";
+import WelcomeSection from "../components/WelcomeSection.jsx";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import ActiveSessions from "../components/ActiveSessions.jsx";
@@ -29,17 +29,18 @@ const Dashboard = () => {
 
     createSession.mutate({
       problem: roomConfig.problem,
-      difficulty: roomConfig.difficulty
+      difficulty: roomConfig.difficulty.toLowerCase()
     },
       {
         onSuccess: (data) => {
+          console.log("Session created:", data);
           setShowModel(false),
             navigate(`/session/${data.session._id}`)
         }
       })
 
   }
-   const activeSessions = activeSessionsData?.sessions || [];
+  const activeSessions = activeSessionsData?.sessions || [];
   const recentSessions = recentSessionsData?.sessions || [];
  const isUserInSession = (session) => {
     if (!user.id) return false;
