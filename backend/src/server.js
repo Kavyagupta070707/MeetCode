@@ -37,9 +37,12 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static(staticPath));
 
     
-    app.get(/^(?!\/api).+/, (req, res) => {
-    res.sendFile(indexPath);
-});
+    app.use((req, res, next) => {
+        if (req.path.startsWith("/api")) {
+            return next();
+        }
+        res.sendFile(indexPath);
+    });
 }
 
 
