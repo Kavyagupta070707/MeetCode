@@ -26,12 +26,12 @@ app.use("/api/sessions", sessionRoutes)
 const _dirname = path.resolve();
 
 if(ENV.NODE_ENV === 'production'){
-    const staticPath = path.join(_dirname,'../frontend/dist');
-    const indexPath = path.join(_dirname,'../frontend/dist/index.html');
+    const staticPath = path.join(__dirname,'../frontend/dist');
+    const indexPath = path.join(__dirname,'../frontend/dist/index.html');
     
     app.use(express.static(staticPath));
     
-    app.get( (req, res) => {
+    app.get( '*', (req, res) => {
     res.sendFile(indexPath);
 });
 }
