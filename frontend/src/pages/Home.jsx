@@ -1,7 +1,8 @@
-import { SignInButton } from '@clerk/clerk-react';
+import { SignInButton, useUser } from '@clerk/clerk-react';
 import React from 'react'
+import { useEffect } from 'react';
 import { toast } from 'react-hot-toast';
-import {Link} from 'react-router'
+import {Link, useNavigate} from 'react-router'
 import {
   ArrowRightIcon,
   CheckIcon,
@@ -14,8 +15,21 @@ import {
 } from "lucide-react";
 
 const Home = () => {
-  
+  const { isSignedIn, isLoaded } = useUser();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoaded && isSignedIn) {
+      navigate('/dashboard');
+    }
+  }, [isLoaded, isSignedIn, navigate]);
+
+  // Show nothing while checking auth status or redirecting
+  if (!isLoaded || isSignedIn) {
+    return null;
+  }
   return (
+    
     <>
       <div className='bg-gradient-to-br from-base-100 via-base-200 to-base-300'>
         <nav className='bg-base-100/80 backdrop-blur-md border-b border-primary/20 sticky top-0 z-50 shadow-lg'>
@@ -33,7 +47,7 @@ const Home = () => {
               </div>
             </Link>
 
-            <SignInButton mode='modal'>
+            <SignInButton mode='modal' fallbackRedirectUrl="/dashboard">
                 <button className='group px-6 py-3 bg-amber-500 rounded-xl text-white font-semibold shadow-lg text-sm hover:shadow-xl transition-all duration-200 hover:scale-105 flex items-center gap-2'>
                   <span>Get Started</span>
                 </button>
@@ -80,7 +94,7 @@ const Home = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4">
-              <SignInButton mode="modal">
+              <SignInButton mode="modal" fallbackRedirectUrl="/dashboard">
                 <button className="btn btn-primary btn-lg">
                   Start Coding Now
                   <ArrowRightIcon className="size-5" />

@@ -31,7 +31,7 @@ export const sessionApi= {
         return response.data;
 
     },
-    getstreamtoken: async()=>{
+    getStreamToken: async()=>{
         const response=await axiosInstance.get("/api/chat/token");
         return response.data;
 

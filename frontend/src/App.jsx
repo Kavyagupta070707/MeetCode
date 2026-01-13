@@ -7,6 +7,7 @@ import { LoaderIcon, Toaster } from 'react-hot-toast';
 import ProblemsPage from './pages/ProblemsPage.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import Problem from './pages/Problem.jsx';
+import SessionPage from './pages/SessionPage.jsx';
 function App() {
 
   const { isSignedIn, isLoaded } = useUser();
@@ -35,7 +36,11 @@ function App() {
               <LoaderIcon className="h-120px w-120px animate-spin text-primary" />
             </div> : isSignedIn ? <ProblemsPage /> : <Navigate to="/" />
         } />
-
+        <Route path="/session/:id" element={
+          !isLoaded ? <div className="flex items-center justify-center py-20">
+              <LoaderIcon className="h-120px w-120px animate-spin text-primary" />
+            </div> : isSignedIn ? <SessionPage /> : <Navigate to="/" />
+        } />
       </Routes>
       <Toaster />
     </div>

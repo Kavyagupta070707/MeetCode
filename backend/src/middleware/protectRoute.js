@@ -5,9 +5,6 @@ export const protectRoute = async (req, res, next) => {
     // clerkMiddleware() already ran, so req.auth is available
     const { userId } = req.auth;
     
-    console.log("Auth check - userId:", userId);
-    console.log("Auth object:", req.auth);
-    
     if (!userId) {
       return res.status(401).json({ message: "Unauthorized - No valid session" });
     }
