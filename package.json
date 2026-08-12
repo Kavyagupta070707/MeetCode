@@ -4,8 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
-    "start": "npm run start --prefix backend"
+    "build": "npm install --prefix MeetCodeBackend/backend --no-audit --fund=false && npm install --prefix MeetCodeFrontend/frontend --no-audit --fund=false && npm run build --prefix MeetCodeFrontend/frontend",
+    "start": "npm run start --prefix MeetCodeBackend/backend",
+    "dev:backend": "npm run dev --prefix MeetCodeBackend/backend",
+    "dev:frontend": "npm run dev --prefix MeetCodeFrontend/frontend"
   },
   "repository": {
     "type": "git",
